@@ -219,6 +219,16 @@ function M:resize(dim, amount)
   require("edgy.layout").update()
 end
 
+-- Set the given dimension to the given amount
+---@param dim "width" | "height"
+---@param amount number
+function M:set_dim(dim, amount)
+  vim.notify("set_dim", vim.log.levels.WARN)
+  vim.w[self.win]["edgy_" .. dim] = amount
+  require("edgy.layout").update()
+end
+
+
 function M:apply_size()
   if not self:is_valid() then
     return
